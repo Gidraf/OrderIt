@@ -8,7 +8,31 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name = "SplashScreenTheme" parent ="Theme.AppCompat.Light.NoActionBar">
-        <item name ="android:windowBackground">@drawable/launcher_view</item>
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/launcher_view</item>
     </style>
+
+    <style name="sports_alert_dialog" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Updating…</item>
+        <item name="DialogSpotColor">@color/colorAccent</item>
+        <item name="DialogSpotCount">3</item>
+    </style>
+
+    <style name="FacebookLoginButton">
+        <item name="android:textSize"></item>
+        <item name="android:background">@drawable/ic_facebook_logo</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
