@@ -51,7 +51,6 @@ public class ForgetPaaswordActivity extends AppCompatActivity implements View.On
         dialog.setTheme(R.style.sports_alert_dialog);
         emailedit = findViewById(R.id.reset_password_email_edit_Text);
         forgetPasswordButton = findViewById(R.id.reset_password_button);
-
         forgetPasswordButton.setOnClickListener(this);
     }
 
