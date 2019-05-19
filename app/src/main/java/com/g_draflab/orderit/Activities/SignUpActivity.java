@@ -72,6 +72,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         maleGender = findViewById(R.id.male_selector);
         signupButton.setOnClickListener(this);
         femaleGender.setOnClickListener(this);
+        femaleGender.setAlpha(0.8f);
         maleGender.setOnClickListener(this);
         dialog = new SpotsDialog.Builder().setContext(this);
         setSupportActionBar(signUpToolbar);
@@ -255,9 +256,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             registerCustomer();
         }
         else if(v==maleGender){
+            maleGender.setAlpha(1f);
+            femaleGender.setAlpha(0.8f);
             genderSelector.setImageDrawable((getResources().getDrawable(R.drawable.ic_male_select_indicator)));
         }else if(v==femaleGender){
             genderSelector.setImageDrawable((getResources().getDrawable(R.drawable.ic_female_selector)));
+            maleGender.setAlpha(0.8f);
+            femaleGender.setAlpha(1f);
         }
     }
 
