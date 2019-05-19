@@ -18,7 +18,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         signInButton = findViewById(R.id.sign_in_home_button);
+
         signInButton.setOnClickListener(this);
 
     }
