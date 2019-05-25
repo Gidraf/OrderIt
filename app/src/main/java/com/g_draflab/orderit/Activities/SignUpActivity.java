@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     Button signupButton;
     Switch termsSwitch;
     ImageView genderSelector;
-    TextView maleGender, femaleGender;
+    TextView maleGender, femaleGender, signInTextView;
     SpotsDialog.Builder dialog;
     AlertDialog builder;
     @Override
@@ -61,6 +62,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         firstNameedit = findViewById(R.id.first_name_edit_Text);
         lastNameedit = findViewById(R.id.last_name_edit_text);
         passwordedit = findViewById(R.id.sign_up_password_edit_text);
+        signInTextView = findViewById(R.id.sign_Up_sign_in_button);
         retypePasswordedit = findViewById(R.id.sign_up_retype_password_edit_text);
         monthedit = findViewById(R.id.month_of_birth);
         dateedit = findViewById(R.id.date_of_birth);
@@ -72,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         maleGender = findViewById(R.id.male_selector);
         signupButton.setOnClickListener(this);
         femaleGender.setOnClickListener(this);
+        signInTextView.setOnClickListener(this);
         femaleGender.setAlpha(0.8f);
         maleGender.setOnClickListener(this);
         dialog = new SpotsDialog.Builder().setContext(this);
@@ -95,7 +98,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 signupButton.setAlpha(1f);
                 signupButton.setEnabled(isChecked);
-
             }
         });
         firstNameedit.addTextChangedListener(new TextWatcher() {
@@ -256,13 +258,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             registerCustomer();
         }
         else if(v==maleGender){
-            maleGender.setAlpha(1f);
-            femaleGender.setAlpha(0.8f);
+            femaleGender.setAlpha(1f);
+            maleGender.setAlpha(0.8f);
             genderSelector.setImageDrawable((getResources().getDrawable(R.drawable.ic_male_select_indicator)));
         }else if(v==femaleGender){
             genderSelector.setImageDrawable((getResources().getDrawable(R.drawable.ic_female_selector)));
-            maleGender.setAlpha(0.8f);
-            femaleGender.setAlpha(1f);
+            femaleGender.setAlpha(0.8f);
+            maleGender.setAlpha(1f);
+        }
+        else if (v==signInTextView){
+            startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+            finish();
         }
     }
 

@@ -33,9 +33,11 @@ dependencies {
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.f0ris.sweetalert:library:1.5.1'
+    implementation 'net.skoumal.fragmentback:fragment-back:0.2.3'
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
     implementation 'com.facebook.android:facebook-login:5.0.1'
     implementation 'io.paperdb:paperdb:2.6'
+    implementation 'com.android.support:cardview-v7:28.0.0'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
 
 }
