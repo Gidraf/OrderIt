@@ -8,4 +8,5 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Constants {
 
+    public static int currentDepartment = 1;
 }

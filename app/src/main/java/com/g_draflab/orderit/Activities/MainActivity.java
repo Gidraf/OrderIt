@@ -1,51 +1,66 @@
 package com.g_draflab.orderit.Activities;
 
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.g_draflab.orderit.Adapter.BottomNavigationAdapter;
+import com.g_draflab.orderit.Fragments.HomeContentFragment;
+import com.g_draflab.orderit.Fragments.HomeContentHolderFragment;
+import com.g_draflab.orderit.Fragments.NavigationDrawerFragment;
+import com.g_draflab.orderit.Interfaces.OnBackPresspressed;
+import com.g_draflab.orderit.Interfaces.OnNavigationClickedListener;
 import com.g_draflab.orderit.R;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import net.skoumal.fragmentback.BackFragmentFragmentActivity;
+
+import java.util.List;
+
+public class MainActivity extends BackFragmentFragmentActivity
+        implements SlidingPaneLayout.PanelSlideListener, OnNavigationClickedListener, OnBackPresspressed {
+    HomeContentFragment navigationDrawerFragment;
+    SlidingPaneLayout drawer;
+    RelativeLayout season;
+    LinearLayout natureView, regionalview, promotionalView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        List<Fragment> availableFragements = getSupportFragmentManager().getFragments();
+
+        for(Fragment f: availableFragements){
+            if(!(f instanceof HomeContentHolderFragment)){
+                Toast.makeText(this, "hey", Toast.LENGTH_SHORT).show();
+                season =   ((HomeContentHolderFragment) f).offerView;
+              natureView =  ((HomeContentHolderFragment) f).womenWearView;
+              regionalview =  ((HomeContentHolderFragment) f).menWearView;
+              promotionalView =  ((HomeContentHolderFragment) f).promotextView;
+            }
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorPrimary));
+        drawer = findViewById(R.id.drawer_layout);
+        drawer.setPanelSlideListener(this);
+        navigationDrawerFragment = (HomeContentFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        if(navigationDrawerFragment != null){
+        navigationDrawerFragment.setClickedListener(this);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
             super.onBackPressed();
-        }
     }
 
     @Override
@@ -55,17 +70,29 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+    public void onPanelSlide(@NonNull View view, float v) {
 
-        // Handle the camera action
+    }
 
+    @Override
+    public void onPanelOpened(@NonNull View view) {
+        isNavigationDrawerClicked(false);
+    }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    @Override
+    public void onPanelClosed(@NonNull View view) {
+    }
+
+    @Override
+    public void isNavigationDrawerClicked(boolean clicked) {
+        if(clicked) {
+            drawer.openPane();
+        }
+    }
+
+    @Override
+    public void backpessed() {
+
     }
 }

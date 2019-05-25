@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#585858"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:id="@+id/top_holder"
+        android:background="#585858"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginEnd="1dp"
+            android:padding="40dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/shop_nav_linear_layout"
+            android:layout_marginRight="1dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_shop_nav_icon"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/shop"
+                android:fontFamily="@font/sourcesanspro_regular"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="40dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/bag_nav_linear_layout">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_bag_nav_icon"/>
+                <android.support.v7.widget.CardView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:cardCornerRadius="13dp"
+                    android:layout_marginStart="55dp"
+                    app:cardBackgroundColor="@color/colorAccent"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:layout_marginLeft="55dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="60"
+                        android:textSize="10sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/background_dark"
+                        android:layout_centerInParent="true"
+                        android:id="@+id/nav_cart_counter"/>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/sourcesanspro_regular"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/bag"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="171dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#585858"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginEnd="1dp"
+            android:padding="30dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/inspiration_nav_linear_layout"
+            android:layout_marginRight="1dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_inspration_nav_icon"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/sourcesanspro_regular"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/inspiration"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="30dp"
+            android:layout_weight="1"
+            android:layout_marginTop="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/stores_nav_linear_layout">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_stores_nav_icon"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/sourcesanspro_regular"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/stores"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="323dp">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/social_share"
+        android:id="@+id/nav_menu_list"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/social_share"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:fontFamily="@font/sourcesanspro_bold"
+                android:background="@color/colorPrimary"
+                android:text="@string/follow_us"
+                android:textColor="#585858"
+                android:textAlignment="center"/>
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimary"
+                android:weightSum="3">
+                
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_black_facebook"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_black_twitter"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_black_pinterest"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_marginTop="311dp"
+        android:layout_marginStart="179dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_dull_polygon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="190dp" />
+</android.support.design.widget.CoordinatorLayout>

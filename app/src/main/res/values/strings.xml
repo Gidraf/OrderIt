@@ -6,9 +6,6 @@
     <string name="sign_in">SIGN IN</string>
     <string name="continue_text">Continue</string>
     <string name="ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="or_sign_in_using_social_networks">OR, SIGN IN USING SOCIAL NETWORKS</string>
@@ -48,12 +45,32 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="shop">Shop</string>
+    <string name="bag">Bag</string>
+    <string name="inspiration">Inspiration</string>
+    <string name="stores">stores</string>
+    <string name="my_account">My Account</string>
+    <string name="customer_support">Customer Support</string>
+    <string name="logout">Log Out</string>
+    <string name="follow_us">FOLLOW US</string>
+    <string name="last_chance">LAST CHANCE!</string>
+    <string name="holiday_shipping_ends_soon">Holiday shipping ends soon.</string>
+    <string name="men">MEN</string>
+    <string name="outwear">OUTWEAR</string>
+    <string name="women">WOMEN</string>
+    <string name="shop_now">SHOP NOW</string>
+    <string name="winter_sale">WINTER SALE</string>
+    <string name="up_to_60_off">UP TO 60% OFF</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_products">All Products</string>
+    <string name="category_id">categoryId</string>
 
 </resources>
