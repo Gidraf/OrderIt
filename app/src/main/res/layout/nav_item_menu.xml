@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:padding="25dp"
+    android:layout_margin="1dp"
+    android:id="@+id/nav_item_menu_text_view"
+    android:textColor="@color/colorPrimaryDark"
+    android:fontFamily="@font/sourcesanspro_regular"
+    android:background="@color/colorPrimary">
+
+</TextView>

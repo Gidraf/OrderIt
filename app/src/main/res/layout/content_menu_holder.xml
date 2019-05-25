@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:id="@+id/products_view"
+        android:visibility="visible"
+        android:layout_below="@id/department_view"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <android.support.design.widget.TabLayout
+            android:layout_alignParentTop="true"
+            android:id="@+id/products_list_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/selectedText"
+            app:tabTextColor="@color/colorPrimary"
+            app:tabGravity="fill"/>
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/products_list_view_holder_view_pager"
+            android:layout_below="@id/products_list_tab_layout"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/department_view">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:id="@+id/promo_text_linear_layout"
+        android:background="@color/colorPrimary"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.1"
+            android:textSize="15sp"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:text="@string/last_chance" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:text="@string/holiday_shipping_ends_soon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.1"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/sourcesanspro_bold"
+            android:textSize="18sp"
+            android:text="@string/shop_now" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/men_wear_view"
+        android:padding="5dp"
+        android:layout_below="@id/promo_text_linear_layout"
+        android:background="#93D6DC">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/men_wear"
+            android:text="@string/men"
+            android:fontFamily="@font/sourcesanspro_extralight"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/outwear"
+            android:id="@+id/men_wear_description"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+
+            android:fontFamily="@font/sourcesanspro_extralight"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/women_wear_view"
+        android:layout_below="@id/men_wear_view"
+        android:padding="5dp"
+        android:background="#F6966C">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/women"
+            android:id="@+id/women_wear"
+            android:fontFamily="@font/sourcesanspro_extralight"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/outwear"
+            android:id="@+id/women_wear_description"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/sourcesanspro_extralight"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/offer_view"
+        android:layout_below="@id/women_wear_view">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentTop="true"
+            android:padding="5dp"
+            android:src="@drawable/ic_snow_flakes"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/winter_sale"
+            android:id="@+id/offer_Text"
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/sourcesanspro_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/up_to_60_off"
+            android:gravity="center"
+            android:fontFamily="@font/sourcesanspro_light"
+            android:id="@+id/offer_text_description"
+            android:layout_below="@id/offer_Text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+        <Button
+            android:id="@+id/offer_Shop_button"
+            android:layout_width="130dp"
+            android:background="@color/colorAccent"
+            android:text="@string/shop_now"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:layout_alignParentEnd="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:fontFamily="@font/sourcesanspro_bold"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

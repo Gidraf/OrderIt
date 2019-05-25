@@ -12,10 +12,10 @@ import com.g_draflab.orderit.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FirstFragment extends Fragment {
+public class FirstIntroFragment extends Fragment {
 
 
-    public FirstFragment() {
+    public FirstIntroFragment() {
         // Required empty public constructor
     }
 
