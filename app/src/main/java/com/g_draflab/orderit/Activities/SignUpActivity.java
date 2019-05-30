@@ -359,12 +359,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     sweetAlertDialog.setCancelable(false);
                     sweetAlertDialog.setContentText(getResources().getString(R.string.success_registration));
                     sweetAlertDialog.setConfirmText(getResources().getString(R.string.sign_in)).setConfirmClickListener(
-                            new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
-                                    finish();
-                                }
+                            sweetAlertDialog1 -> {
+                                startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+                                finish();
                             }
                     ).show();
                     return;

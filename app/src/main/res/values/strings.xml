@@ -72,5 +72,30 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="all_products">All Products</string>
     <string name="category_id">categoryId</string>
+    <string name="customize">CUSTOMIZE</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="size">SIZE</string>
+    <string name="color">COLOR</string>
+    <string name="you_have_no_items_in_your_shopping_bag">You have no items in your shopping bag.</string>
+    <string name="you_have">You have</string>
+    <string name="in_your">in your</string>
+    <string name="shopping_bag">shopping bag</string>
+    <string name="checkout">Checkout</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="shipping">Shipping</string>
+    <string name="username">Username</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="save_and_continue">Save and Continue</string>
+    <string name="card_details">CARD DETAILS</string>
+    <string name="enter_your_debit_or_credit_card_details">Enter your debit or credit card details.</string>
+    <string name="ship_to">SHIP TO</string>
+    <string name="some_intor">We’ve sent you an email with all the details of your order. You can track your shipment with the order id below.</string>
+    <string name="thank_you">THANK YOU</string>
+    <string name="back_to_shop">BACK TO SHOP</string>
+    <string name="title_activity_details_page">DetailsPage</string>
 
 </resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_weight="3"
+    tools:context=".Fragments.Inspiration">
+
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:src="@drawable/life"
+       android:id="@+id/lifeView"
+       android:scaleType="fitXY"
+       android:layout_weight="1"/>
+
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:src="@drawable/fashion"
+       android:id="@+id/fashionView"
+       android:scaleType="fitXY"
+       android:layout_weight="1"/>
+
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:src="@drawable/videos"
+       android:scaleType="fitXY"
+       android:id="@+id/videosView"
+       android:layout_weight="1"/>
+
+</LinearLayout>

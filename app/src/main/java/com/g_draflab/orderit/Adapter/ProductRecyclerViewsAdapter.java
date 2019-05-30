@@ -1,8 +1,10 @@
 package com.g_draflab.orderit.Adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,49 +12,41 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.g_draflab.orderit.Interfaces.GetAllProductsListener;
-import com.g_draflab.orderit.Interfaces.GetCurrentPagePositionListener;
+import com.g_draflab.orderit.Activities.ProductActivity;
+import com.g_draflab.orderit.Interfaces.OnLoadMore;
 import com.g_draflab.orderit.Models.Product;
-import com.g_draflab.orderit.Models.ProductResponse;
 import com.g_draflab.orderit.R;
-import com.g_draflab.orderit.Retrofit.ApiUtils;
-import com.g_draflab.orderit.Retrofit.ProductsServices;
 
 import java.util.List;
-
-import dmax.dialog.SpotsDialog;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ProductRecyclerViewsAdapter extends RecyclerView.Adapter<ProductsHolder>{
     Context context;
     List<Product> products;
+    View.OnClickListener listener;
 
 
-
-
-    public ProductRecyclerViewsAdapter(Context context) {
+    public ProductRecyclerViewsAdapter(Context context, View.OnClickListener listener, RecyclerView recyclerView) {
         this.context = context;
+        this.listener = listener;
     }
+
 
     @NonNull
     @Override
     public ProductsHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.product_holder, viewGroup, false);
-
-        return new ProductsHolder(view);
+        return new ProductsHolder(view,listener );
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductsHolder productsHolder, int i) {
-        Product product = products.get(i);
-
+        final Product product = products.get(i);
         productsHolder.productName.setText(product.getName());
         productsHolder.productDescription.setText(product.getDescription());
-        productsHolder.realPrice.setText(product.getPrice());
-        productsHolder.discountedPrice.setText(product.getDiscountedPrice());
-
+        productsHolder.realPrice.setText("$"+product.getPrice());
+        productsHolder.discountedPrice.setText("$"+product.getDiscountedPrice());
+        productsHolder.realPrice.setPaintFlags(productsHolder.realPrice.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+        productsHolder.setListener(v -> context.startActivity(new Intent(context, ProductActivity.class).putExtra("productId", product.getProductId())));
     }
 
     @Override
@@ -61,25 +55,45 @@ public class ProductRecyclerViewsAdapter extends RecyclerView.Adapter<ProductsHo
     }
 
     public void setProducts(List<Product> products) {
-        if(this.products != null){
-            this.products.clear();
-        }
-        this.products = products;
-        notifyDataSetChanged();
+            this.products = products;
+            notifyDataSetChanged();
     }
 }
 
 
 
-class ProductsHolder extends RecyclerView.ViewHolder {
+class ProductsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView productName, productDescription, discountedPrice, realPrice;
 
-    public ProductsHolder(@NonNull View itemView) {
+    View.OnClickListener listener;
+
+    public ProductsHolder(@NonNull View itemView, View.OnClickListener listener) {
         super(itemView);
+        this.listener = listener;
         productName = itemView.findViewById(R.id.product_name_text_view);
         productDescription = itemView.findViewById(R.id.product_description_text_view);
         discountedPrice = itemView.findViewById(R.id.discounted_price);
         realPrice = itemView.findViewById(R.id.real_price_text_view);
+
+        itemView.setOnClickListener(this);
+    }
+
+    public View.OnClickListener getListener() {
+        return listener;
+    }
+
+    public void setListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+
+    public ProductsHolder(@NonNull View itemView) {
+        super(itemView);
+    }
+
+    @Override
+    public void onClick(View v) {
+        listener.onClick(v);
     }
 }

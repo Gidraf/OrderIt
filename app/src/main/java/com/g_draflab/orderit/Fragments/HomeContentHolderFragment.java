@@ -3,6 +3,8 @@ package com.g_draflab.orderit.Fragments;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -53,23 +55,21 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
     TextView menWear, femaleWear, offerWear, menWearDescription, femaleWearDescription, offerWearDescription;
     DepartmentsServices departmentsServices;
     private int shortAnimationDuration;
-    SpotsDialog.Builder dialog;
-    AlertDialog progress;
-    CategoryService categoryService;
     public  LinearLayout menWearView, womenWearView, promotextView;
     public RelativeLayout offerView, productsView;
     public Button offerShopButton;
     ProductsFragmentAdapter fragmentAdapter;
-    ViewPager productsViewPager;
-    TabLayout productsCategoriesTabLayout;
     List<Product> productList;
     Department regional;
     Department nature;
     Department seasonal;
-    ProductsServices productsServices;
     OnBackPresspressed backPresspressed;
+    CategoryService categoryService;
+    TabLayout productsCategoriesTabLayout;
+    SpotsDialog.Builder dialog;
+    AlertDialog progress;
+    ViewPager productsViewPager;
     int currentDepartment;
-
 
     public HomeContentHolderFragment() {
 
@@ -83,14 +83,14 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_content2, container, false);
-        dialog = new SpotsDialog.Builder().setContext(getContext());
-        dialog.setTheme(R.style.sports_alert_dialog);
-        categoryService = ApiUtils.categoryService();
         departmentsServices = ApiUtils.departmentsServices();
         menWear =  view.findViewById(R.id.men_wear);
-        productsViewPager = view.findViewById(R.id.products_list_view_holder_view_pager);
-        productsCategoriesTabLayout = view.findViewById(R.id.products_list_tab_layout);
         femaleWear =  view.findViewById(R.id.women_wear);
+        categoryService = ApiUtils.categoryService();
+        productsViewPager = view.findViewById(R.id.products_list_view_holder_view_pager);
+        dialog = new SpotsDialog.Builder().setContext(getActivity());
+        dialog.setTheme(R.style.sports_alert_dialog);
+        productsCategoriesTabLayout = view.findViewById(R.id.products_list_tab_layout);
         offerWear =  view.findViewById(R.id.offer_Text);
         menWearDescription =  view.findViewById(R.id.men_wear_description);
         femaleWearDescription =  view.findViewById(R.id.women_wear_description);
@@ -107,45 +107,27 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
         womenWearView.setOnClickListener(this);
         promotextView.setOnClickListener(this);
         offerView.setOnClickListener(this);
-        productsViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                Constants.currentDepartment = 1;
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
         // Inflate the layout for this fragment
         fetchDepartmentsData();
         return view;
     }
 
     private void fetchDepartmentsData() {
-        showProgressBar();
+
         departmentsServices.getAllDepartments().enqueue(new Callback<List<Department>>() {
             @Override
             public void onResponse(Call<List<Department>> call, Response<List<Department>> response) {
                 if(response.isSuccessful()){
-                    dismissProgrssBar();
                     setHomePageData(response.body());
                     return;
                 }
-                dismissProgrssBar();
-                Toast.makeText(getContext(), "an error occurred", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getActivity(), "an error occurred", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<List<Department>> call, Throwable t) {
-                dismissProgrssBar();
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -162,19 +144,6 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
         femaleWearDescription.setText(nature.getDescription());
         offerWear.setText(seasonal.getName());
         offerWearDescription.setText(seasonal.getDescription());
-    }
-
-    public void showProgressBar(){
-        dialog.setMessage(getResources().getString(R.string.loading));
-        dialog.setCancelable(false);
-        progress = dialog.build();
-        progress.show();
-    }
-
-    public void dismissProgrssBar(){
-        if(progress.isShowing()){
-            progress.dismiss();
-        }
     }
 
     @Override
@@ -206,7 +175,7 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
                     });
             if(regional != null) {
                 Constants.currentDepartment = regional.getDepartment_id();
-                getAllCategories(Constants.currentDepartment);
+               getAllCategories(Constants.currentDepartment);
             }
         }
         if(v==womenWearView){
@@ -274,7 +243,7 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
                     });
             if(seasonal != null) {
                 Constants.currentDepartment = seasonal.getDepartment_id();
-                getAllCategories(Constants.currentDepartment);
+                getAllCategories(currentDepartment);
             }
         }
     }
@@ -285,20 +254,19 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
                 if(response.isSuccessful()) {
-                    productsView.setVisibility(View.VISIBLE);
                     dismissProgrssBar();
                     Category category = new Category();
                     category.setName(getString(R.string.all_products));
                     category.setCategoryId("0");
                     List<Category> categories = response.body();
                     categories.add(0, category);
-                    fragmentAdapter = new ProductsFragmentAdapter(getActivity().getSupportFragmentManager(), categories, getContext());
+                    fragmentAdapter = new ProductsFragmentAdapter(getFragmentManager(),categories, getContext());
                     productsViewPager.setAdapter(fragmentAdapter);
                     productsCategoriesTabLayout.setupWithViewPager(productsViewPager);
                     return;
                 }
                 dismissProgrssBar();
-                Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), response.message(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -309,6 +277,19 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
         });
     }
 
+    public void showProgressBar(){
+        dialog.setMessage(getResources().getString(R.string.loading));
+        dialog.setCancelable(false);
+        progress = dialog.build();
+        progress.show();
+    }
+
+    public void dismissProgrssBar(){
+        if(progress.isShowing()){
+            progress.dismiss();
+        }
+    }
+
     @Override
     public boolean onBackPressed() {
         returnHomeScreen();
@@ -316,39 +297,42 @@ public class HomeContentHolderFragment extends Fragment implements View.OnClickL
     }
 
     private void returnHomeScreen() {
-        offerView.animate().alpha(1f)
-                .setDuration(shortAnimationDuration)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        offerView.setVisibility(View.VISIBLE);
-                    }
-                });
-        promotextView.animate().alpha(1f)
-                .setDuration(shortAnimationDuration)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        promotextView.setVisibility(View.VISIBLE);
-                    }
-                });
-        menWearView.animate().alpha(1f)
-                .setDuration(shortAnimationDuration)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        menWearView.setVisibility(View.VISIBLE);
-                    }
-                });
-        womenWearView.animate().alpha(1f)
-                .setDuration(shortAnimationDuration)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        womenWearView.setVisibility(View.VISIBLE);
-                    }
-                });
-        productsView.setVisibility(View.GONE);
+            offerView.animate().alpha(1f)
+                    .setDuration(shortAnimationDuration)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            offerView.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+            promotextView.animate().alpha(1f)
+                    .setDuration(shortAnimationDuration)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            promotextView.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+            menWearView.animate().alpha(1f)
+                    .setDuration(shortAnimationDuration)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            menWearView.setVisibility(View.VISIBLE);
+                        }
+                    });
+            womenWearView.animate().alpha(1f)
+                    .setDuration(shortAnimationDuration)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            womenWearView.setVisibility(View.VISIBLE);
+                        }
+                    });
+                productsView.setVisibility(View.GONE);
+
     }
 
 
