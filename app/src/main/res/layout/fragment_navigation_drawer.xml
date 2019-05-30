@@ -13,7 +13,6 @@
         android:background="#585858"
         android:orientation="horizontal">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_marginEnd="1dp"
@@ -104,7 +103,6 @@
         android:layout_marginBottom="1dp"
         android:orientation="horizontal">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_marginEnd="1dp"
@@ -184,8 +182,7 @@
                 android:text="@string/follow_us"
                 android:textColor="#585858"
                 android:textAlignment="center"/>
-            
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

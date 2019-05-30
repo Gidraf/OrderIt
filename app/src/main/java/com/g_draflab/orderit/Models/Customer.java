@@ -11,7 +11,7 @@ public class Customer {
      String region;
      String postal_code;
      String country;
-     String shipping_region_id;
+     int shipping_region_id;
      String day_phone;
      String eve_phone;
      String mob_phone;
@@ -21,7 +21,7 @@ public class Customer {
 
     public Customer(int customer_id, String name, String email, String address_1,
                     String address_2, String city, String region, String postal_code,
-                    String country, String shipping_region_id, String day_phone,
+                    String country, int shipping_region_id, String day_phone,
                     String eve_phone, String mob_phone) {
         this.customer_id = customer_id;
         this.name = name;
@@ -110,11 +110,11 @@ public class Customer {
         this.country = country;
     }
 
-    public String getShipping_region_id() {
+    public int getShipping_region_id() {
         return shipping_region_id;
     }
 
-    public void setShipping_region_id(String shipping_region_id) {
+    public void setShipping_region_id(int shipping_region_id) {
         this.shipping_region_id = shipping_region_id;
     }
 

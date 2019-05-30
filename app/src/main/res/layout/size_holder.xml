@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:scaleType="fitXY"
+        android:id="@+id/size_border_image"
+        android:src="@drawable/ic_border_size_polygon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:fontFamily="@font/sourcesanspro_bold"
+        android:text="s"
+        android:id="@+id/size_text_view"
+        android:layout_centerInParent="true"
+        android:textColor="#999999"
+        />
+
+</RelativeLayout>

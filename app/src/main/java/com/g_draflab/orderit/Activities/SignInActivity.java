@@ -28,6 +28,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.g_draflab.orderit.Models.Customer;
 import com.g_draflab.orderit.Models.CustomerRegisterResponse;
 import com.g_draflab.orderit.R;
 import com.g_draflab.orderit.Retrofit.ApiUtils;
@@ -67,7 +68,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         init();
         Paper.init(this);
         callbackManager = CallbackManager.Factory.create();
-
         AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(
@@ -90,7 +90,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                             @Override
                             public void onResponse(Call<CustomerRegisterResponse> call, Response<CustomerRegisterResponse> response) {
                                 if(response.isSuccessful()){
-                                    storeToken(getString(R.string.token), response.body().getAccessToken());
+                                    storeToken(response.body());
                                     dismissProgrssBar();
                                     startActivity(new Intent(SignInActivity.this, MainActivity.class));
                                     finish();
@@ -157,7 +157,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         forgetPasswordButton = findViewById(R.id.forget_password_btn);
         signInButton = findViewById(R.id.sign_in_button);
         signUpButton = findViewById(R.id.sign_Up_sign_button);
-
         forgetPasswordButton.setOnClickListener(this);
         signInButton.setOnClickListener(this);
         signUpButton.setOnClickListener(this);
@@ -253,7 +252,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             public void onResponse(Call<CustomerRegisterResponse> call, Response<CustomerRegisterResponse> response) {
                 if(response.isSuccessful()) {
                     dismissProgrssBar();
-                    storeToken(getString(R.string.token), response.body().getAccessToken());
+                    storeToken(response.body());
                     startActivity(new Intent(SignInActivity.this, MainActivity.class));
                     finish();
                     return;
@@ -279,8 +278,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
      *
      * ***/
 
-    public void storeToken(String key, String data){
-        Paper.book().write(key, data);
+    public void storeToken(CustomerRegisterResponse data){
+
+        Paper.book().write("token", data.getAccessToken());
+        Paper.book().write("userId", data.getCustomer().getCustomer_id());
+        Paper.book().write("username", data.getCustomer().getName());
     }
 
     public void showProgressBar(){

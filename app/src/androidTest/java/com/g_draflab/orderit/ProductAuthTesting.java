@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleInstrumentedTest {
+public class ProductAuthTesting {
 
 
     @Test
@@ -76,6 +76,7 @@ public class ExampleInstrumentedTest {
         }
 
     }
+
 
 
 }

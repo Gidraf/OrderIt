@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.g_draflab.orderit.Adapter.BottomNavigationAdapter;
@@ -22,36 +23,35 @@ import com.g_draflab.orderit.Fragments.HomeContentHolderFragment;
 import com.g_draflab.orderit.Fragments.NavigationDrawerFragment;
 import com.g_draflab.orderit.Interfaces.OnBackPresspressed;
 import com.g_draflab.orderit.Interfaces.OnNavigationClickedListener;
+import com.g_draflab.orderit.Models.CartResponse;
 import com.g_draflab.orderit.R;
+import com.g_draflab.orderit.Retrofit.ApiUtils;
+import com.g_draflab.orderit.Retrofit.CartServices;
 
 import net.skoumal.fragmentback.BackFragmentFragmentActivity;
 
 import java.util.List;
 
+import io.paperdb.Paper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends BackFragmentFragmentActivity
         implements SlidingPaneLayout.PanelSlideListener, OnNavigationClickedListener, OnBackPresspressed {
     HomeContentFragment navigationDrawerFragment;
     SlidingPaneLayout drawer;
-    RelativeLayout season;
-    LinearLayout natureView, regionalview, promotionalView;
+    CartServices cartServices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        List<Fragment> availableFragements = getSupportFragmentManager().getFragments();
-
-        for(Fragment f: availableFragements){
-            if(!(f instanceof HomeContentHolderFragment)){
-                Toast.makeText(this, "hey", Toast.LENGTH_SHORT).show();
-                season =   ((HomeContentHolderFragment) f).offerView;
-              natureView =  ((HomeContentHolderFragment) f).womenWearView;
-              regionalview =  ((HomeContentHolderFragment) f).menWearView;
-              promotionalView =  ((HomeContentHolderFragment) f).promotextView;
-            }
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Paper.init(this);
+        String cartId = Paper.book().read("cartId");
         drawer = findViewById(R.id.drawer_layout);
         drawer.setPanelSlideListener(this);
+        cartServices = ApiUtils.cartServices();
         navigationDrawerFragment = (HomeContentFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         if(navigationDrawerFragment != null){
         navigationDrawerFragment.setClickedListener(this);
