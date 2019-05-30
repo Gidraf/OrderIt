@@ -1,4 +1,5 @@
 package com.g_draflab.orderit.Interfaces;
 
-public class OnRequestSuccessListener {
+public interface OnRequestSuccessListener {
+    void onRequestSuccessListener(int index);
 }

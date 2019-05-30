@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.facebook.FacebookSdk;
 import com.g_draflab.orderit.Activities.NavigationActivity;
+import com.g_draflab.orderit.Models.CustomerRegisterResponse;
 import com.g_draflab.orderit.R;
 
 import io.paperdb.Paper;
@@ -19,7 +20,7 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
         Paper.init(this);
-        String token = Paper.book().read(getString(R.string.token));
+        String token = Paper.book().read("token");
         String hasSigned_in_before = Paper.book().read(getString(R.string.has_signed_in_before));
         if(token == null && !Boolean.parseBoolean(hasSigned_in_before)){
             startActivity(new Intent(this, NavigationActivity.class));

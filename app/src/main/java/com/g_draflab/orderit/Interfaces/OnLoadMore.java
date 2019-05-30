@@ -1,4 +1,5 @@
 package com.g_draflab.orderit.Interfaces;
 
-public class OnLoadMore {
+public interface OnLoadMore {
+    void onLoadMore();
 }

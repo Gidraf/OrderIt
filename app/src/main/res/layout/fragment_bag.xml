@@ -1,14 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D8D8D8"
     tools:context=".Fragments.BagFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/colorPrimaryDark"
+        android:layout_centerInParent="true"
+        android:id="@+id/no_item_view"
+        android:visibility="gone"
+        >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/no_cart_border"
+        android:scaleType="fitXY"
+        android:layout_centerInParent="true"
+        android:padding="20dp"
+        />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_no_cart_bag"
+            android:scaleType="fitXY"
+            android:id="@+id/no_cart_bag"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/no_cart_text"/>
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:id="@+id/no_cart_text"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/you_have_no_items_in_your_shopping_bag"
+            android:textColor="#8888"
+            android:padding="10dp"
+            android:textAlignment="center"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cart_content_view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/top_relative_layout"
+            android:background="@color/colorPrimaryDark">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toStartOf="@id/checkout_btn"
+        android:weightSum="3"
+        android:id="@+id/total_item_text_holder"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="30dp"
+        android:layout_toLeftOf="@id/checkout_btn">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/you_have"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:layout_weight="1.1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/total_cart_items_text_view"
+            android:textColor="@color/colorAccent"
+            android:text=""
+            android:fontFamily="@font/sourcesanspro_bold"
+            android:layout_weight="1.2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/in_your"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:layout_weight="01"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/checkout_btn"
+        android:layout_toLeftOf="@id/checkout_btn"
+        android:text="@string/shopping_bag"
+        android:id="@+id/shopping_long"
+        android:paddingLeft="10dp"
+        android:layout_below="@id/total_item_text_holder"
+        android:paddingStart="30dp" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:id="@+id/checkout_btn"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/checkout"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/sourcesanspro_bold"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="10dp" />
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cart_recycler"
+            android:layout_below="@id/top_relative_layout"
+            android:layout_marginTop="1dp"
+            android:scrollbars="vertical"
+            android:layout_above="@id/total_holder">
+
+        </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="1dp"
+            android:id="@+id/total_holder"
+            android:layout_alignParentBottom="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#D8D8D8"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:text="@string/subtotal"
+                    android:fontFamily="@font/sourcesanspro_regular"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="700"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:id="@+id/subtotal_text_view"
+                    android:fontFamily="@font/sourcesanspro_regular"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D8D8D8"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:paddingLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:text="@string/shipping"
+                    android:fontFamily="@font/sourcesanspro_regular"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:paddingLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="$0"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:id="@+id/shipping_cost_text_view"
+                    android:fontFamily="@font/sourcesanspro_regular"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#D8D8D8"
+                android:layout_marginTop="1dp"
+                android:paddingBottom="40dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:paddingLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:text="Total"
+                    android:fontFamily="@font/sourcesanspro_regular"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:paddingLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="000"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:id="@+id/total_text_view"
+                    android:fontFamily="@font/sourcesanspro_regular"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

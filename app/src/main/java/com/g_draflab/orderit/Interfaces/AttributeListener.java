@@ -1,4 +1,5 @@
 package com.g_draflab.orderit.Interfaces;
 
-public class AttributeListener {
+public interface AttributeListener {
+    void onAttrbutelistener(String attribute);
 }

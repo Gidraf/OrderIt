@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        >
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@color/colorPrimaryDark"
+            android:id="@+id/cart_item_image"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="gvg"
+            android:padding="2dp"
+            android:id="@+id/cart_item_name"
+            android:textAllCaps="true"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:layout_toEndOf="@id/cart_item_image"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_toRightOf="@id/cart_item_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="900"
+            android:paddingLeft="5dp"
+            android:id="@+id/item_real_price"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:layout_toEndOf="@id/cart_item_image"
+            android:layout_below="@id/cart_item_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_toRightOf="@id/cart_item_image"
+            android:paddingStart="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="500"
+            android:paddingLeft="5dp"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:layout_toEndOf="@id/item_real_price"
+            android:layout_below="@id/cart_item_name"
+            android:id="@+id/item_discounted_price"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_toRightOf="@id/item_real_price"
+            android:paddingStart="5dp" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/item_discounted_price"
+            android:layout_below="@id/cart_item_name"
+            android:id="@+id/polygon_cart_image"
+            android:src="@drawable/ic_black_polygon"
+            android:scaleType="fitXY"
+            android:layout_toRightOf="@id/item_discounted_price"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xl"
+            android:paddingLeft="5dp"
+            android:fontFamily="@font/sourcesanspro_regular"
+            android:layout_toEndOf="@id/polygon_cart_image"
+            android:layout_below="@id/cart_item_name"
+            android:id="@+id/item_size"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_toRightOf="@id/polygon_cart_image"
+            android:paddingStart="5dp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_edit_icon"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:id="@+id/cart_edit_item"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
