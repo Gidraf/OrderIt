@@ -52,21 +52,24 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sourcesanspro_regular"
+                android:id="@+id/real_price_text_view"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="800"
+                />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/discounted_price"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:padding="5dp"
+                android:fontFamily="@font/sourcesanspro_bold"
                 android:textColor="#999999"
                 android:text="50"
-                />
-            <TextView
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/real_price_text_view"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="800"
                 />
         </LinearLayout>
     </LinearLayout>

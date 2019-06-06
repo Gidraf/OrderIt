@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.AddressFragment">
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/username"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/sourcesanspro_regular"
+        app:met_floatingLabelTextColor="@android:color/background_dark"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="Name"
+        app:met_autoValidate="true"
+        app:met_floatingLabelTextSize="15sp"
+        app:met_clearButton="true"
+        app:met_floatingLabelAlwaysShown="true"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:drawablePadding="5dp"
+        android:id="@+id/username_edit_text"
+        android:singleLine="true">
+        <requestFocus />
+    </com.rengwuxian.materialedittext.MaterialEditText>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address Line 1"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/sourcesanspro_regular"
+        app:met_floatingLabelTextColor="@android:color/background_dark"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="Adress Line 1"
+        android:layout_below="@id/username_edit_text"
+        app:met_autoValidate="true"
+        app:met_floatingLabelTextSize="15sp"
+        app:met_clearButton="true"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:drawablePadding="5dp"
+        android:id="@+id/address_line1"
+        android:singleLine="true">
+        <requestFocus />
+    </com.rengwuxian.materialedittext.MaterialEditText>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/address_line_2"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/sourcesanspro_regular"
+        app:met_floatingLabelTextColor="@android:color/background_dark"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelText="Adress Line 2"
+        app:met_autoValidate="true"
+        app:met_floatingLabelTextSize="15sp"
+        app:met_clearButton="true"
+        android:layout_below="@id/address_line1"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:drawablePadding="5dp"
+        android:id="@+id/address_line2"
+        android:singleLine="true">
+        <requestFocus />
+    </com.rengwuxian.materialedittext.MaterialEditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/city_holder"
+        android:layout_below="@id/address_line2"
+        android:weightSum="2">
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/city"
+            android:fontFamily="@font/sourcesanspro_regular"
+            app:met_floatingLabelTextColor="@android:color/background_dark"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="City"
+            app:met_autoValidate="true"
+            app:met_floatingLabelTextSize="15sp"
+            app:met_clearButton="true"
+            android:layout_margin="5dp"
+            android:imeOptions="actionNext"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:drawablePadding="5dp"
+            android:id="@+id/city_edit_text"
+            android:singleLine="true">
+            <requestFocus />
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/state"
+            android:fontFamily="@font/sourcesanspro_regular"
+            app:met_floatingLabelTextColor="@android:color/background_dark"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="State"
+            app:met_autoValidate="true"
+            app:met_floatingLabelTextSize="15sp"
+            app:met_clearButton="true"
+            android:layout_margin="5dp"
+            android:imeOptions="actionNext"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:drawablePadding="5dp"
+            android:id="@+id/state_edit_text"
+            android:singleLine="true">
+            <requestFocus />
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/country_edit_text_holder"
+        android:layout_below="@id/city_holder"
+        android:weightSum="2">
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/zip_code"
+            android:fontFamily="@font/sourcesanspro_regular"
+            app:met_floatingLabelTextColor="@android:color/background_dark"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="Zip Code"
+            app:met_autoValidate="true"
+            app:met_floatingLabelTextSize="15sp"
+            app:met_clearButton="true"
+            android:layout_margin="5dp"
+            android:imeOptions="actionNext"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:drawablePadding="5dp"
+            android:id="@+id/zip_edit_text"
+            android:singleLine="true">
+            <requestFocus />
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/country"
+            android:fontFamily="@font/sourcesanspro_regular"
+            app:met_floatingLabelTextColor="@android:color/background_dark"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="Country"
+            app:met_autoValidate="true"
+            app:met_floatingLabelTextSize="15sp"
+            app:met_clearButton="true"
+            android:imeOptions="actionNext"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:drawablePadding="5dp"
+            android:id="@+id/country_edit_text"
+            android:singleLine="true">
+            <requestFocus />
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+    </LinearLayout>
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:fontFamily="@font/sourcesanspro_regular"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:background="@color/colorAccent"
+        android:layout_below="@id/country_edit_text_holder"
+        android:id="@+id/shpping_region_spinner"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_address_btn"
+        android:text="@string/save_and_continue"
+        android:textColor="@android:color/white"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="@font/sourcesanspro_bold"
+        android:background="@color/colorPrimary"/>
+</RelativeLayout>

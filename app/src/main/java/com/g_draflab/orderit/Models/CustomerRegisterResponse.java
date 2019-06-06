@@ -3,7 +3,7 @@ package com.g_draflab.orderit.Models;
 import com.google.gson.annotations.SerializedName;
 
 public class CustomerRegisterResponse {
-    @SerializedName("customer")
+    @SerializedName("user")
     Customer customer;
     @SerializedName("accessToken")
     String accessToken;
